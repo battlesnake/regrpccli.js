@@ -1,0 +1,16 @@
+{
+  "name": "regrpccli",
+  "version": "1.0.0",
+  "description": "Register RPC client JS port",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark K Cowan",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "relay": "github:opencosmos/relay",
+    "sequencer": "github:battlesnake/sequencer.js"
+  }
+}
