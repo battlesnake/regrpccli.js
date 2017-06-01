@@ -18,7 +18,7 @@ RegRPC.create = (...args) => new Promise((res, rej) => {
 });
 
 RegRPC.prototype = new EventEmitter();
-function RegRPC(options) {
+function RegRPC(options, client = null) {
 	EventEmitter.call(this);
 	const { host, port, name } = _.defaults({}, options, default_opts);
 
@@ -55,7 +55,10 @@ function RegRPC(options) {
 		}
 	};
 
-	const client = new Client({ server: host, port: port, local: name });
+	if (!client) {
+		client = new Client({ server: host, port: port, local: name });
+		this.client = client;
+	}
 	client.on('open', (...args) => this.emit('open', ...args));
 	client.on('close', (...args) => this.emit('close', ...args));
 	client.on('info', (...args) => this.emit('info', ...args));
